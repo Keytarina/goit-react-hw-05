@@ -12,8 +12,52 @@ export const fetchTrendingMovies = async () => {
 	const url = "https://api.themoviedb.org/3/trending/movie/day?language=en-US";
 	try {
 		const response = await axios.get(url, options);
+		return response;
 	} catch (error) {
 		console.error("Помилка завантаження даних", error);
 	}
-	return response.data.results;
+};
+
+export const fetchSearchMovie = async () => {
+	// const url =
+	// 	"https://api.themoviedb.org/3/search/movie?{}include_adult=false&language=en-US&page=1";
+	// try {
+	// 	const response = await axios.get(url, options);
+	// 	return response;
+	// } catch (error) {
+	// 	console.error("Помилка завантаження даних", error);
+	// }
+};
+
+export const fetchMovieDetails = async () => {
+	// const url =
+	// 	"https://api.themoviedb.org/3/search/movie?{}include_adult=false&language=en-US&page=1";
+	// try {
+	// 	const response = await axios.get(url, options);
+	// 	return response;
+	// } catch (error) {
+	// 	console.error("Помилка завантаження даних", error);
+	// }
+};
+
+export const fetchMovieCredits = async () => {
+	// const url =
+	// 	"https://api.themoviedb.org/3/search/movie?{}include_adult=false&language=en-US&page=1";
+	// try {
+	// 	const response = await axios.get(url, options);
+	// 	return response;
+	// } catch (error) {
+	// 	console.error("Помилка завантаження даних", error);
+	// }
+};
+
+export const fetchMovieReviews = async () => {
+	// const url =
+	// 	"https://api.themoviedb.org/3/search/movie?{}include_adult=false&language=en-US&page=1";
+	// try {
+	// 	const response = await axios.get(url, options);
+	// 	return response;
+	// } catch (error) {
+	// 	console.error("Помилка завантаження даних", error);
+	// }
 };
