@@ -7,6 +7,9 @@ const options = {
 	},
 };
 
+//Унікальний ключ доступу до Themoviedb.org API
+const KEY = "bf61ea45dc8fabc6d689f00f6f670b18";
+
 //Функція, що фетчить список популярних фільмів (для сторінки Home)
 export const fetchTrendingMovies = async () => {
 	const url = "https://api.themoviedb.org/3/trending/movie/day?language=en-US";
@@ -15,11 +18,22 @@ export const fetchTrendingMovies = async () => {
 };
 
 //Функція, що фетчить інформацію про конкретный фільм (для сторінки MovieDetails)
-export const fetchMovie = async (movieId) => {
-	const url = `https://api.themoviedb.org/3//movie/${movieId}`;
+// export const fetchMovie = async (movieId) => {
+// 	const url = `https://api.themoviedb.org/3//movie/${movieId}`;
 
-	const response = await axios.get(url, options);
-	return response;
+// 	const response = await axios.get(url, options);
+// 	return response;
+// };
+
+//Функція, що фетчить інформацію про конкретный фільм (для сторінки MovieDetails)
+export const fetchMovie = async (movieId) => {
+	axios.defaults.baseURL = "https://api.themoviedb.org/3/movie";
+	const { data } = await axios(`${movieId}`, {
+		params: {
+			api_key: KEY,
+		},
+	});
+	return data;
 };
 
 export const fetchSearchMovie = async () => {

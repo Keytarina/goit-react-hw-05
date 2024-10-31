@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-import { fetchMovie } from "../../services/apiServices";
+import { fetchSearchMovie } from "../../services/apiServices";
 
 import Loading from "../../components/Loading/Loading";
 import MovieList from "../../components/MovieList/MovieList";
@@ -37,7 +37,7 @@ export default function MoviesPage() {
 	const handleSearch = async (topic) => {
 		try {
 			setIsLoading(true);
-			const response = await fetchMovie(topic);
+			const response = await fetchSearchMovie(topic);
 			setMovies(response.data.results);
 			if (!response.results.length) {
 				return toast.error("Please enter search term!");
@@ -52,7 +52,7 @@ export default function MoviesPage() {
 	return (
 		<div className={css.moviesPage}>
 			{isLoading && <Loading />}
-			<SearchForm onSearch={handleSearch} />
+			<SearchForm />
 			<MovieList movies={movies} />
 		</div>
 	);
