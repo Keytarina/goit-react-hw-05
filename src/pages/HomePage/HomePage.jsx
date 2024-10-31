@@ -25,8 +25,9 @@ export default function HomePage() {
 
 	return (
 		<div className={css.home_page}>
+			<h1>Trending today</h1>
 			{trendingMovies.length > 0 ? (
-				<MovieList trendingMovies={trendingMovies} />
+				<MovieList movies={trendingMovies} />
 			) : (
 				<Loading />
 			)}

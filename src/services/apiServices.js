@@ -10,26 +10,19 @@ const options = {
 //Функція, що фетчить список популярних фільмів (для сторінки Home)
 export const fetchTrendingMovies = async () => {
 	const url = "https://api.themoviedb.org/3/trending/movie/day?language=en-US";
-	try {
-		const response = await axios.get(url, options);
-		return response;
-	} catch (error) {
-		console.error("Помилка завантаження даних", error);
-	}
+	const response = await axios.get(url, options);
+	return response;
+};
+
+//Функція, що фетчить інформацію про конкретный фільм (для сторінки MovieDetails)
+export const fetchMovie = async (movieId) => {
+	const url = `https://api.themoviedb.org/3//movie/${movieId}`;
+
+	const response = await axios.get(url, options);
+	return response;
 };
 
 export const fetchSearchMovie = async () => {
-	// const url =
-	// 	"https://api.themoviedb.org/3/search/movie?{}include_adult=false&language=en-US&page=1";
-	// try {
-	// 	const response = await axios.get(url, options);
-	// 	return response;
-	// } catch (error) {
-	// 	console.error("Помилка завантаження даних", error);
-	// }
-};
-
-export const fetchMovieDetails = async () => {
 	// const url =
 	// 	"https://api.themoviedb.org/3/search/movie?{}include_adult=false&language=en-US&page=1";
 	// try {
