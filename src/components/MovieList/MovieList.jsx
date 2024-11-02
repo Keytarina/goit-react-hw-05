@@ -9,7 +9,7 @@ export default function MovieList({ movies }) {
 			{movies.map(({ id, backdrop_path, title, poster_path }) => (
 				<li key={id} className={css.movie_item}>
 					<Link
-						to={`movies/${id}`}
+						to={`/movies/${id}`}
 						href={backdrop_path}
 						target="_blank"
 						rel="noreferrer noopener"

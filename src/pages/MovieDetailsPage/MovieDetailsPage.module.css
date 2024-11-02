@@ -1,0 +1,11 @@
+.movieDetailsPage {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 5rem 4rem;
+}
+.movieDetails {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}

@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
-
-import { fetchTrendingMovies } from "../../services/apiServices";
-
+import { getTrendingMovies } from "../../api/movies";
 import MovieList from "../../components/MovieList/MovieList";
 import Loading from "../../components/Loading/Loading";
-
 import css from "./HomePage.module.css";
 
 export default function HomePage() {
@@ -13,10 +10,10 @@ export default function HomePage() {
 	useEffect(() => {
 		async function fetchData() {
 			try {
-				const response = await fetchTrendingMovies();
-				setTrendingMovies(response.data.results);
+				const data = await getTrendingMovies();
+				setTrendingMovies(data.results);
 			} catch (error) {
-				console.error("Помилка завантаження даних", error);
+				console.error("Помилка завантаження даних", error.message);
 			}
 		}
 
