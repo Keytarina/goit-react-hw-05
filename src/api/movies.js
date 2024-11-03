@@ -23,8 +23,9 @@ export const getMovieDetails = async (movieId) => {
 
 //Функція, що фетчить список фільмів за ключевим словом (для сторінки Movies)
 export const fetchMovie = async (query) => {
-	const { data } = await moviesInstance.get(`/search/movie`);
-
+	const { data } = await moviesInstance.get(`/search/movie`, {
+		params: { query },
+	});
 	return data;
 };
 

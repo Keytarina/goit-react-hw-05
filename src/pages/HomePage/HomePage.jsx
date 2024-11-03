@@ -8,16 +8,16 @@ export default function HomePage() {
 	const [trendingMovies, setTrendingMovies] = useState([]);
 
 	useEffect(() => {
-		async function fetchData() {
+		const fetchTrendingMovies = async () => {
 			try {
 				const data = await getTrendingMovies();
 				setTrendingMovies(data.results);
 			} catch (error) {
 				console.error("Помилка завантаження даних", error.message);
 			}
-		}
+		};
 
-		fetchData();
+		fetchTrendingMovies();
 	}, []);
 
 	return (

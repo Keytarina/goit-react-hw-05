@@ -1,0 +1,50 @@
+/* Основний контейнер списку касту */
+.castList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    padding: 20px;
+    margin: 0;
+    list-style: none;
+  }
+  
+  /* Кожен елемент касту */
+  .castItem {
+    width: 160px;
+    text-align: center;
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1), 0px 8px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .castItem:hover {
+    transform: translateY(-8px);
+    box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.15), 0px 10px 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Зображення актора */
+  .castItem img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 2px solid #f0f0f0;
+  }
+  
+  /* Ім'я актора */
+  .castItem p {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    padding: 12px 0;
+    margin: 0;
+    transition: color 0.3s ease;
+  }
+  
+  .castItem:hover p {
+    color: #1d72b8;
+  }
+  

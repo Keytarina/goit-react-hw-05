@@ -1,5 +1,11 @@
-import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useRef, useState, useEffect } from "react";
+import {
+	useParams,
+	Link,
+	Outlet,
+	useLocation,
+	useNavigate,
+} from "react-router-dom";
 import { getMovieDetails } from "../../api/movies";
 
 import Loading from "../../components/Loading/Loading";
@@ -10,12 +16,15 @@ export default function MovieDetailsPage() {
 	const [movie, setMovie] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
 	const { movieId } = useParams();
+	const navigate = useNavigate();
+	const location = useLocation();
 
 	//Виконуємо запит getMovieDetails() при кожній зміні movieId
 	useEffect(() => {
-		async function fetchData() {
+		const fetchMovieDetails = async () => {
 			try {
 				setIsLoading(true);
+
 				const data = await getMovieDetails(movieId);
 				setMovie(data);
 			} catch (error) {
@@ -23,17 +32,17 @@ export default function MovieDetailsPage() {
 			} finally {
 				setIsLoading(false);
 			}
-		}
-		fetchData();
+		};
+		fetchMovieDetails();
 	}, [movieId]);
+
+	const goBack = () => navigate(location.state.from);
 
 	return (
 		<div className={css.movieDetailsPage}>
 			{isLoading && <Loading />}
 
-			<Link to="/">
-				<button>Go back</button>
-			</Link>
+			<button onClick={goBack}>Go back</button>
 
 			{movie && (
 				<>
@@ -68,15 +77,33 @@ export default function MovieDetailsPage() {
 							)}
 						</div>
 					</div>
+
+					<hr className={css.custom_line} />
+
 					<h3>Additional information</h3>
-					<ul>
+					<ul className={css.additionalInfoList}>
 						<li>
-							<Link to="cast">Cast</Link>
+							<Link
+								state={{ from: location.state.from }}
+								to="cast"
+								className={css.additionalInfoLink}
+							>
+								Cast
+							</Link>
 						</li>
 						<li>
-							<Link to="reviews">Reviews</Link>
+							<Link
+								state={{ from: location.state.from }}
+								to="reviews"
+								className={css.additionalInfoLink}
+							>
+								Reviews
+							</Link>
 						</li>
 					</ul>
+
+					<hr className={css.custom_line} />
+					<Outlet />
 				</>
 			)}
 		</div>

@@ -1,7 +1,7 @@
 .movieDetailsPage {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 10px;
     padding: 5rem 4rem;
 }
 .movieDetails {
@@ -9,3 +9,32 @@
     flex-direction: row;
     gap: 40px;
 }
+.custom_line {
+    border: none;
+    height: 2px; /* товщина лінії */
+    background-color: #ccc; /* колір лінії */
+    margin:5px 0; /* відступи зверху та знизу */
+    width: 100%; /* ширина лінії */
+}
+  /* Список посилань */
+  .additionalInfoList {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+  }
+  
+  /* Стиль посилання */
+  .additionalInfoLink {
+    color: #007bff;
+    transition: color 0.1s ease;
+  }
+  
+  .additionalInfoLink:hover {
+    color: #2dd2e1;
+  }
+  

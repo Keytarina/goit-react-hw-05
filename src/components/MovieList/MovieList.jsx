@@ -1,19 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import defaultImgPoster from "../../assets/img/default-poster.jpg";
 
 import css from "./MovieList.module.css";
 
 export default function MovieList({ movies }) {
+	const location = useLocation();
+
 	return (
 		<ul className={css.movie_list}>
-			{movies.map(({ id, backdrop_path, title, poster_path }) => (
+			{movies.map(({ id, title, poster_path }) => (
 				<li key={id} className={css.movie_item}>
-					<Link
-						to={`/movies/${id}`}
-						href={backdrop_path}
-						target="_blank"
-						rel="noreferrer noopener"
-					>
+					<Link state={{ from: location }} to={`/movies/${id}`}>
 						<img
 							src={
 								poster_path

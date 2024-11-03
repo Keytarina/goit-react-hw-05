@@ -3,21 +3,22 @@ import { useSearchParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-// import css from "./SearchForm.module.css";
+import css from "./SearchForm.module.css";
 
 export default function SearchForm() {
 	const [searchParams, setSearchParams] = useSearchParams();
-	const search = searchParams.get("searchQuery") ?? "";
+	const defaultSearch = searchParams.get("q") ?? "";
 
 	const handleSubmit = (evt) => {
 		evt.preventDefault();
 		const form = evt.target;
+		const searchQuery = form.elements.searchQuery.value;
 
 		// Якщо текстове поле порожнє, виводимо повідомлення і припиняємо виконання функції
-		if (form.elements.topic.value.trim() === "") {
+		if (searchQuery.trim() === "") {
 			toast.warn("Please enter search term!", {
 				position: "top-right",
-				autoClose: 5000,
+				autoClose: 3000,
 				hideProgressBar: false,
 				closeOnClick: true,
 				pauseOnHover: true,
@@ -26,15 +27,22 @@ export default function SearchForm() {
 			});
 			return;
 		}
-		setSearchParams({ searchQuery: form.elements.searchQuery.value });
+		setSearchParams({ query: searchQuery });
 		form.reset();
 	};
 
 	return (
-		<div>
-			<form onSubmit={handleSubmit}>
-				<input type="text" name="searchQuery" />
-				<button type="submit">Search</button>
+		<div className={css.container}>
+			<form onSubmit={handleSubmit} className={css.form}>
+				<input
+					type="text"
+					name="searchQuery"
+					defaultValue={defaultSearch}
+					className={css.input}
+				/>
+				<button type="submit" className={css.button}>
+					Search
+				</button>
 			</form>
 		</div>
 	);
